@@ -1,0 +1,8 @@
+C:\Users\XuPeiYao\Documents\GitHub\BackPropagation\BackPropagation\bin\Debug\BackPropagation.exe.config
+C:\Users\XuPeiYao\Documents\GitHub\BackPropagation\BackPropagation\bin\Debug\BackPropagation.exe
+C:\Users\XuPeiYao\Documents\GitHub\BackPropagation\BackPropagation\bin\Debug\BackPropagation.pdb
+C:\Users\XuPeiYao\Documents\GitHub\BackPropagation\BackPropagation\obj\Debug\BackPropagation.csprojResolveAssemblyReference.cache
+C:\Users\XuPeiYao\Documents\GitHub\BackPropagation\BackPropagation\obj\Debug\BackPropagation.exe
+C:\Users\XuPeiYao\Documents\GitHub\BackPropagation\BackPropagation\obj\Debug\BackPropagation.pdb
+C:\Users\XuPeiYao\Documents\GitHub\BackPropagation\BackPropagation\bin\Debug\Newtonsoft.Json.dll
+C:\Users\XuPeiYao\Documents\GitHub\BackPropagation\BackPropagation\bin\Debug\Newtonsoft.Json.xml
