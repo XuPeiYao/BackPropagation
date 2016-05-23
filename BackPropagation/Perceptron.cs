@@ -28,6 +28,16 @@ namespace BackPropagation {
         /// 權重修正值集合
         /// </summary>
         internal double[] WeightDelta { get; set; }
+
+        /// <summary>
+        /// 最後閥值修正值，作為慣性動量依據
+        /// </summary>
+        internal double Last_ThresholdDelta { get; set; }
+
+        /// <summary>
+        /// 最後權重修正值集合，作為慣性動量依據
+        /// </summary>
+        internal double[] Last_WeightDelta { get; set; }
         #endregion
 
         /// <summary>
@@ -94,6 +104,7 @@ namespace BackPropagation {
             Random rand = new Random(DateTime.Now.Millisecond);
             Weights = Enumerable.Range(0, InputCount).Select(x => rand.NextDouble(RandomMinWeight, RandomMaxWeight)).ToArray();
             WeightDelta = Enumerable.Range(0, InputCount).Select(x => 0.0).ToArray();
+            Last_WeightDelta = Enumerable.Range(0, InputCount).Select(x => 0.0).ToArray();
             Threshold = rand.NextDouble(-1, 1);
         }
 

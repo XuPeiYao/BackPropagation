@@ -20,8 +20,8 @@ namespace BackPropagation {
                 new LearnData() { Input = new double[] {0,1 },Output = new double[] { 1 }},
             };
             
-            //呼叫學習函數，速率0.8，目標誤差值0.05
-            network.Train(data,0.8,0.05);
+            //呼叫學習函數，速率0.8，慣性0.6，目標誤差值0.05
+            network.Train(data,0.8,0.6,0.05);
 
             //測試
             foreach (var item in data) {

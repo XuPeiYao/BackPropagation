@@ -103,9 +103,10 @@ namespace BackPropagation {
         /// </summary>
         /// <param name="Data">學習資料集和</param>
         /// <param name="Rate">學習速率</param>
+        /// <param name="Momentum">慣性動量</param>
         /// <param name="Difference">目標誤差值</param>
         /// <param name="Iterations">迭代次數限制</param>
-        public void Train(LearnData[] Data, double Rate, double Difference = 0, int Iterations = -1) {
+        public void Train(LearnData[] Data, double Rate, double Momentum = 0, double Difference = 0, int Iterations = -1) {
             for (int i = 0; Iterations == -1 || i < Iterations; i++) {
                 double Error = 0;
                 foreach (LearnData Item in Data) {
@@ -116,10 +117,19 @@ namespace BackPropagation {
                 for (int layer = Length - 1; layer > -1; layer--) {
                     for (int instance = 0; instance < this[layer].Length; instance++) {
                         //修正閥值
-                        this[layer][instance].Threshold += this[layer][instance].ThresholdDelta;// / Math.Sqrt(Data.Length);
+                        this[layer][instance].Threshold += this[layer][instance].ThresholdDelta + this[layer][instance].Last_ThresholdDelta * Momentum;// / Math.Sqrt(Data.Length);
                         for (int weight = 0; weight < this[layer][instance].Length; weight++) {
-                            this[layer][instance][weight] += this[layer][instance].WeightDelta[weight];// / Math.Sqrt(Data.Length);
+                            this[layer][instance][weight] += this[layer][instance].WeightDelta[weight] + this[layer][instance].Last_WeightDelta[weight] * Momentum;// / Math.Sqrt(Data.Length);
                         }
+                    }
+                }
+                #endregion
+
+                #region 備份修正值
+                for(int layer = Length - 1;layer > -1;layer--) {
+                    for(int instance = 0; instance < this[layer].Length; instance++) {
+                        this[layer][instance].Last_ThresholdDelta = this[layer][instance].ThresholdDelta;
+                        this[layer][instance].Last_WeightDelta = this[layer][instance].Last_WeightDelta;
                     }
                 }
                 #endregion
