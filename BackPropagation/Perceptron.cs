@@ -8,38 +8,6 @@ using System.Threading.Tasks;
 
 namespace BackPropagation {
     public class Perceptron : IPerceptron {
-        #region 用以學習使用的暫存欄位
-        /// <summary>
-        /// 最後一次的運算輸出
-        /// </summary>
-        internal double Result { get; set; }
-
-        /// <summary>
-        /// 運算輸出與預期結果的誤差
-        /// </summary>
-        internal double ResultDelta { get; set; }
-
-        /// <summary>
-        /// 閥值修正值
-        /// </summary>
-        internal double ThresholdDelta { get; set; }
-
-        /// <summary>
-        /// 權重修正值集合
-        /// </summary>
-        internal double[] WeightDelta { get; set; }
-
-        /// <summary>
-        /// 最後閥值修正值，作為慣性動量依據
-        /// </summary>
-        internal double Last_ThresholdDelta { get; set; }
-
-        /// <summary>
-        /// 最後權重修正值集合，作為慣性動量依據
-        /// </summary>
-        internal double[] Last_WeightDelta { get; set; }
-        #endregion
-
         /// <summary>
         /// 權重集合
         /// </summary>
@@ -103,21 +71,10 @@ namespace BackPropagation {
 
             Random rand = new Random(DateTime.Now.Millisecond);
             Weights = Enumerable.Range(0, InputCount).Select(x => rand.NextDouble(RandomMinWeight, RandomMaxWeight)).ToArray();
-            WeightDelta = Enumerable.Range(0, InputCount).Select(x => 0.0).ToArray();
-            Last_WeightDelta = Enumerable.Range(0, InputCount).Select(x => 0.0).ToArray();
             Threshold = rand.NextDouble(-1, 1);
         }
 
-        /// <summary>
-        /// 清除最後一次學習迭代產生的數據
-        /// </summary>
-        internal void ClearResult() {
-            Result = 0;
-            ResultDelta = 0;
-            ThresholdDelta = 0;
-            WeightDelta = new double[WeightDelta.Length];
-        }
-
+       
         /// <summary>
         /// 計算輸入值產生的結果
         /// </summary>
@@ -133,7 +90,7 @@ namespace BackPropagation {
         /// <param name="Input">輸入值</param>
         /// <returns>運算結果</returns>
         public double Compute(List<double> Input) {
-            return Result = Activation(Input.Select((x, i) => x * Weights[i]).Sum() - Threshold);
+            return Activation(Input.Select((x, i) => x * Weights[i]).Sum() - Threshold);
         }
     }
 }

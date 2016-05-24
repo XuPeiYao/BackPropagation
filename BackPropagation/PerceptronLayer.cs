@@ -70,10 +70,5 @@ namespace BackPropagation {
         public double[] Compute(List<double> Input) {
             return Instances.Select(x => x.Compute(Input)).ToArray();
         }
-
-        /// <summary>
-        /// 清除最後一次學習迭代產生的數據
-        /// </summary>
-        internal void ClearResult() => Parallel.ForEach(Instances, x => x.ClearResult());
     }
 }
