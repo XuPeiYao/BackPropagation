@@ -18,11 +18,10 @@ namespace BackPropagation {
 
         public Func<double, double> Activation { get; set; }
             = x => x;
-        //= ActivationFunction.LogisticSigmoid;
+            //= ActivationFunction.LogisticSigmoid;
 
         public Func<double, double> DiffActivation { get; set; }
             = x => 1;
-            //= ActivationFunction.Diff_LogisticSigmoid;
 
         public PerceptronNetwork Network { get; set; }
 

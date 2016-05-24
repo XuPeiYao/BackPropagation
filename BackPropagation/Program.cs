@@ -28,10 +28,6 @@ namespace BackPropagation {
                 Console.WriteLine($"測試({string.Join(",", item.Input)}) => {string.Join(",", network.Compute(item.Input))}");
             }
 
-            PerceptronNetwork hyperNetwork = new PerceptronNetwork(2, 0, 1, 2, 1);
-            hyperNetwork[0][0] = new HyperPerceptron(network);
-            var c = hyperNetwork.Compute(0, 0);
-
             //儲存神經網路結果
             StreamWriter writer = new StreamWriter("output.json");
             writer.Write(network.ToJObject());//匯出JSON，也可使用Load方法反序列化
