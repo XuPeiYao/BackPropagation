@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="ActivationFunction.cs" />
     <Compile Include="Extensions\RandomExtension.cs" />
+    <Compile Include="HyperPerceptron.cs" />
+    <Compile Include="IPerceptron.cs" />
     <Compile Include="JsonNet.PrivateSettersContractResolvers\PrivateSettersContractResolvers.cs" />
     <Compile Include="LearnData.cs" />
     <Compile Include="Perceptron.cs" />

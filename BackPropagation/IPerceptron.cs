@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace BackPropagation {
     public interface IPerceptron {
-        double Threshold { get; }
+        double Threshold { get; set; }
         double[] Weights { get; }
-        double this[int Index] { get; }
+        double this[int Index] { get; set; }
 
         int Length { get; }
-        Func<double, double> Activation { get; }
-        Func<double, double> DiffActivation { get; }
+        Func<double, double> Activation { get; set; }
+        Func<double, double> DiffActivation { get; set; }
 
         double Compute(params double[] Input);
+        double Compute(List<double> Input);
     }
 }

@@ -11,7 +11,7 @@ namespace BackPropagation {
         /// <summary>
         /// 目前神經網路層所含感知器節點集合
         /// </summary>
-        public Perceptron[] Instances { get;private set; }
+        public IPerceptron[] Instances { get;private set; }
 
         /// <summary>
         /// 目前神經網路層所需要的輸入值數量
@@ -26,13 +26,16 @@ namespace BackPropagation {
         public int Length => Instances.Length;
 
         /// <summary>
-        /// 取得指定索引感知器
+        /// 取得或指定索引感知器
         /// </summary>
         /// <param name="Index">索引</param>
         /// <returns>感知器</returns>
-        public Perceptron this[int Index] {
+        public IPerceptron this[int Index] {
             get {
                 return Instances[Index];
+            }
+            set {
+                Instances[Index] = value;
             }
         }
 
@@ -47,7 +50,7 @@ namespace BackPropagation {
             this.InputCount = InputCount;
             this.Instances = Enumerable
                             .Range(0, InstancesCount)
-                            .Select(x => new Perceptron(InputCount,RandomMinWeight,RandomMaxWeight))
+                            .Select(x => (IPerceptron)new Perceptron(InputCount,RandomMinWeight,RandomMaxWeight))
                             .ToArray();
 
             if (InstancesCount == 0) this.Instances = null;
