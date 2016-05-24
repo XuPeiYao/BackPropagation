@@ -23,14 +23,27 @@ namespace BackPropagation {
         /// </summary>
         [JsonIgnore]
         public Func<double, double> Activation { get; set; }
-            = ActivationFunction.LogisticSigmoid;
+            = Default_Activation;
 
         /// <summary>
         /// 激發函數的一階微分
         /// </summary>
         [JsonIgnore]
         public Func<double, double> DiffActivation { get; set; } 
+            = Default_DiffActivation;
+
+        /// <summary>
+        /// 預設激發函數
+        /// </summary>
+        public static Func<double, double> Default_Activation { get; set; }
+            = ActivationFunction.LogisticSigmoid;
+
+        /// <summary>
+        /// 預設激發函數的一階微分
+        /// </summary>
+        public static Func<double, double> Default_DiffActivation { get; set; }
             = ActivationFunction.Diff_LogisticSigmoid;
+
 
         /// <summary>
         /// 取得或設定指定索引之權值
