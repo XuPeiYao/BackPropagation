@@ -160,7 +160,7 @@ namespace BackPropagation {
                     if (layer == Length - 1) {//輸出層
                         this[layer][instance].ResultDelta =
                             (Data.Output[instance] - this[layer][instance].Result) *
-                            Perceptron.DiffActivation(this[layer][instance].Result);
+                            this[layer][instance].DiffActivation(this[layer][instance].Result);
                             //(this[layer][instance].Result *
                             //(1.0 - this[layer][instance].Result) +0.01);
                         Error += Math.Abs(Data.Output[instance] - this[layer][instance].Result);
@@ -173,7 +173,7 @@ namespace BackPropagation {
                                 this[layer + 1][nextInstance][instance];
                         }
                         this[layer][instance].ResultDelta = sumDelta *
-                            Perceptron.DiffActivation(this[layer][instance].Result);
+                            this[layer][instance].DiffActivation(this[layer][instance].Result);
                             //(this[layer][instance].Result * 
                             //(1.0 - this[layer][instance].Result));
                     }

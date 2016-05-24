@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BackPropagation {
-    public class Perceptron {
+    public class Perceptron : IPerceptron {
         #region 用以學習使用的暫存欄位
         /// <summary>
         /// 最後一次的運算輸出
@@ -54,14 +54,14 @@ namespace BackPropagation {
         /// 激發函數
         /// </summary>
         [JsonIgnore]
-        public static Func<double, double> Activation { get; set; }
+        public Func<double, double> Activation { get; set; }
             = ActivationFunction.LogisticSigmoid;
 
         /// <summary>
         /// 激發函數的一階微分
         /// </summary>
         [JsonIgnore]
-        public static Func<double, double> DiffActivation { get; set; } 
+        public Func<double, double> DiffActivation { get; set; } 
             = ActivationFunction.Diff_LogisticSigmoid;
 
         /// <summary>
