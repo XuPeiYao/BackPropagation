@@ -160,6 +160,7 @@ namespace BackPropagation {
         /// <param name="Difference">目標誤差值</param>
         /// <param name="Iterations">迭代次數限制</param>
         public void Train(LearnData[] Data, double Rate, double Momentum = 0, double Difference = 0, int Iterations = -1) {
+            double Min = double.MaxValue;
             for (int i = 0; Iterations == -1 || i < Iterations; i++) {
                 //學習用暫存資料
                 LearnPerceptron[][] LearnNodes = GetLearnPerceptrons();
@@ -189,8 +190,8 @@ namespace BackPropagation {
                     }
                 }
                 #endregion
-
-                Console.WriteLine($"迭代:{i}\t{Error}");
+                Min = Math.Min(Min, Error);
+                Console.WriteLine($"迭代:{i}\t{Error}\t{Min}");
                 if (Error <= Difference) {
                     break;
                 }
